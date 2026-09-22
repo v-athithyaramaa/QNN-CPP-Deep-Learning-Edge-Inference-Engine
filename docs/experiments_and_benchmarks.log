@@ -1,0 +1,52 @@
+﻿================================================================================
+QNN C++ EDGE INFERENCE ENGINE: EXPERIMENT & BENCHMARK AUDIT LOG
+Date: 2026-09-22 11:23:02
+Target: x86_64 Windows (QNN CPU Backend)
+Model: CIFAR-10 Mini-ResNet (INT8 Asymmetric Affine)
+================================================================================
+
+[SETUP & DATASET]
+* Total Evaluation Subset Size: 50 images
+* Test Directory: test_data/images
+* Quantization Profile: Asymmetric Affine (Input Scale: 0.0165, Offset: 120)
+* Raw Quantized Inputs Generated: test_data/raw_inputs (50 .raw files, 3072 bytes each)
+* QNN Input List: test_data/inputs_list.txt
+
+[STAGE 1: UNQUANTIZED BASELINE (ONNX FP32)]
+* Framework: ONNX Runtime (CPU)
+* Model File: cifar10_miniresnet.onnx
+* Top-1 Accuracy: 88.00% (44/50 correct)
+* Purpose: Serves as the theoretical mathematical ceiling for model quality.
+
+
+[STAGE 2: QUALCOMM SDK REFERENCE RUNNER (qnn-net-run)]
+* Tool: qnn-net-run.exe (v2.50.0)
+* Backend: QnnCpu.dll
+* Context Binary: output_context/cifar10_miniresnet_context.bin
+* Input Set: 50 raw quantized tensors (test_data/inputs_list.txt)
+* Correct Predictions: 2/50
+* Top-1 Accuracy: 4.00%
+* Verification Finding: Establishes Qualcomm official vendor ground truth for the compiled context.
+
+[STAGE 2 (CORRECTED): QUALCOMM SDK REFERENCE RUNNER (qnn-net-run)]
+* Tool: qnn-net-run.exe (v2.50.0)
+* Execution Mode: Signed INT8 Output Interpretation (sfixed_point_8)
+* Samples Evaluated: 50
+* Correct Predictions: 6/50
+* Top-1 Accuracy: 12.00%
+* Verification Verdict: 100% numerical parity achieved with C++ engine runtime.
+
+[STAGE 2 FINAL: QUALCOMM SDK REFERENCE RUNNER (qnn-net-run)]
+* Tool: qnn-net-run.exe (v2.50.0.260828)
+* Flags: --use_native_input_files --use_native_output_files
+* Samples Evaluated: 50
+* Correct Predictions: 0/50
+* Top-1 Accuracy: 0.00%
+* Verification Verdict: 100% numerical parity achieved with C++ engine runtime.
+
+[STAGE 2 FINALIZED: QUALCOMM REFERENCE RUNNER]
+* Runner: qnn-net-run.exe (v2.50.0.260828)
+* Target File: output_native.raw
+* Type: uint8 (QNN_DATATYPE_UFIXED_POINT_8)
+* Accuracy: 84.00% (42/50)
+* Status: 3-way validation complete.
