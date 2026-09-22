@@ -1,0 +1,24 @@
+{
+  "graphs": {
+    "cifar10_miniresnet_quantized": {
+      "tensors": {
+        "input": {
+          "scale": 0.0165,
+          "offset": 120,
+          "bitwidth": 8,
+          "is_symmetric": false
+        }
+      }
+    },
+    "cifar10_miniresnet": {
+      "tensors": {
+        "input": {
+          "scale": 0.0165,
+          "offset": 120,
+          "bitwidth": 8,
+          "is_symmetric": false
+        }
+      }
+    }
+  }
+}
