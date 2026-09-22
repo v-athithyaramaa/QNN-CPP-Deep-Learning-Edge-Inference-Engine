@@ -1,0 +1,25 @@
+﻿# Build outputs
+build_engine/
+bin/
+lib/
+*.obj
+*.ilk
+*.pdb
+*.tlog
+*.idb
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# IDE configs
+.vscode/
+.vs/
+
+# Scratch & Archives
+tmp_*/
+*.tar.gz
+*.zip
+
+# Root duplicates
+output/output_context/
