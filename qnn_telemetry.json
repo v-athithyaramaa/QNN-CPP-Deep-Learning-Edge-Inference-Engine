@@ -1,0 +1,27 @@
+{
+  "model": "CIFAR-10 Mini-ResNet (INT8 Quantized)",
+  "backend": "QNN CPU Backend (x86_64)",
+  "metrics": {
+    "total_samples": 50,
+    "correct": 42,
+    "top1_accuracy_percent": 84.00,
+    "throughput_fps": 525.43,
+    "avg_latency_ms": 1.9032,
+    "p50_latency_ms": 1.4506,
+    "p90_latency_ms": 3.4523,
+    "p99_latency_ms": 4.6748,
+    "jitter_ms": 1.2266,
+    "avg_cycles": 4370914
+  },
+  "layer_profiles": [
+    {"name": "Conv2D_1 [3x3, 3->32, Relu]", "latency_ms": 0.0706, "cycles": 162265},
+    {"name": "ResBlock1_Conv1 [3x3, 32->32, Relu]", "latency_ms": 0.1295, "cycles": 297487},
+    {"name": "ResBlock1_Conv2 [3x3, 32->32]", "latency_ms": 0.1295, "cycles": 297487},
+    {"name": "ResBlock1_Add + Relu", "latency_ms": 0.0177, "cycles": 40566},
+    {"name": "ResBlock2_Conv1 [3x3, 32->64, Relu]", "latency_ms": 0.1059, "cycles": 243398},
+    {"name": "ResBlock2_Conv2 [3x3, 64->64]", "latency_ms": 0.1059, "cycles": 243398},
+    {"name": "ResBlock2_Add + Relu", "latency_ms": 0.0118, "cycles": 27044},
+    {"name": "GlobalAveragePool2D [64->64]", "latency_ms": 0.0059, "cycles": 13522},
+    {"name": "FullyConnected_Logits [64->10]", "latency_ms": 0.0118, "cycles": 27044}
+  ]
+}
