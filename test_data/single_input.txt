@@ -1,0 +1,1 @@
+input:=D:/QNN-CPP-Deep-Learning-Edge-Inference-Engine/test_data/raw_inputs/test_0_class_3.raw

@@ -1,0 +1,17 @@
+---
+timestamp: 330938941633
+command: D:\qairt\2.50.0.260828\bin\x86_64-windows-msvc\qnn-net-run.exe --backend D:\qairt\2.50.0.260828\lib\x86_64-windows-msvc\QnnCpu.dll --retrieve_context output_context/cifar10_miniresnet_context.bin --input_list test_data/inputs_list_unix.txt --output_dir test_data/qnn_net_run_fixed
+execution_mode: synchronous
+inferences_completed: 13
+graphs:
+  - graph_name: cifar10_miniresnet_quantized
+    input_tensors:
+    - tensor_name: input
+      id: 1
+      datatype: QNN_DATATYPE_UFIXED_POINT_8
+      dimensions: [1,32,32,3]
+    output_tensors:
+    - tensor_name: output
+      id: 42
+      datatype: QNN_DATATYPE_UFIXED_POINT_8
+      dimensions: [1,10]

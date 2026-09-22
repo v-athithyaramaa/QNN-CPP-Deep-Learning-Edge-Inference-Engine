@@ -1,0 +1,1 @@
+cifar10_miniresnet_quantized:input:=D:/QNN-CPP-Deep-Learning-Edge-Inference-Engine/test_data/raw_inputs/test_10_class_0.raw
